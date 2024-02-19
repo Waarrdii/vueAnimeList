@@ -3,17 +3,20 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
   <title>Vue.js Anime Data Fetch</title>
 </head>
 <body>
-  <div id="app">
-    <h2>Anime Data</h2>
-    <ul v-if="anime.length > 0">
-      <li v-for="animeItem in anime" :key="animeItem.mal_id">
-        {{ animeItem.title }} ({{ animeItem.score }}) ({{animeItem.status}})
-      </li>
-    </ul>
-    <p v-else>Loading data...</p>
+  <div id="app" class="container-fluid row">
+    <div v-for="item in anime" :key="item.mal_id" class="card" style="width: 18rem;">
+      
+      <div class="card-body">
+        <img :src="item.images.webp.image_url" class="card-img-top " alt="...">
+        <h5 class="card-title">{{item.title}} ({{item.score}})</h5>
+        <p  class="card-text">{{item.synopsis | truncate(80)}}</p>
+        <a href="#" class="btn btn-primary">Go somewhere</a>
+      </div>
+    </div>
   </div>
 
 
