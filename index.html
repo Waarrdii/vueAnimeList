@@ -14,14 +14,12 @@
           <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
             Genre
           </a>
-          <div class="dropdown-menu">
-            <div class="custom-control custom-checkbox">
-              <input type="checkbox" class="custom-control-input" id="fantasy">
-              <label class="custom-control-label" for="fantasy">fantasy</label>
-            </div>
-            <div class="custom-control custom-checkbox">
-              <input type="checkbox" class="custom-control-input" id="action">
-              <label class="custom-control-label" for="action">action</label>
+          <div class="dropdown-menu px-2">
+            <div v-for="genre in allGenres" :key="genre.name" class="form-check">
+              <input class="form-check-input" type="checkbox" :value="genre.name" :id="genre.mal_id">
+              <label class="form-check-label" for="genre.mal_id" :data-mal-id="genre.mal_id">
+                {{ genre.name }}
+              </label>
             </div>
           </div>
         </div>

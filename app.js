@@ -2,6 +2,7 @@ const app = new Vue({
   el: '#app',
   data: {
     anime: [],
+    allGenres:[],
     error: null,
   },
   mounted() {
@@ -10,8 +11,16 @@ const app = new Vue({
         this.anime = response.data.data;
         console.log(this.anime)
         
+        // Simpan genre ke dalam array tanpa duplikat
+        this.genres = response.data.data.map(anime => anime.genres);
+        this.allGenres = this.genres.reduce((a,b) => a.concat(b),[]);
+         // Filter duplikat hanya sekali setelah penggabungan
+         this.allGenres = this.allGenres.filter((genre, index) => {
+          return this.allGenres.findIndex(p=>p.mal_id === genre.mal_id)=== index;
+         });
+         console.log(this.allGenres); // Cek apakah sudah difilter
       })
-      .catch(error => {
+      .catch(error => { 
         this.error = error;
         console.error('Error fetching data:', error);
       });
