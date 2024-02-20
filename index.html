@@ -7,25 +7,51 @@
   <title>Vue.js Anime Data Fetch</title>
 </head>
 <body>
-  <div id="app" class="container-fluid row">
-    <div v-for="item in anime" :key="item.mal_id" class="card" style="width: 18rem;">
-      
-      <div class="card-body" >
-        
-          <img :src="item.images.webp.image_url" class="img-fluid" style="object-fit: cover;" alt="...">
-
-       
-        <h5 class="card-title">{{item.title | truncate(20)}}</h5>
-        <p  class="card-text">Score : {{item.score}}</p>
-        <p  class="card-text">{{item.synopsis | truncate(80)}}</p>
-        <a href="#" class="btn btn-primary">Go somewhere</a>
+  <div id="app" >
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
+            Genre
+          </a>
+          <div class="dropdown-menu">
+            <div class="custom-control custom-checkbox">
+              <input type="checkbox" class="custom-control-input" id="fantasy">
+              <label class="custom-control-label" for="fantasy">fantasy</label>
+            </div>
+            <div class="custom-control custom-checkbox">
+              <input type="checkbox" class="custom-control-input" id="action">
+              <label class="custom-control-label" for="action">action</label>
+            </div>
+          </div>
+        </div>
       </div>
+      
+      <form class="form-inline my-2 my-lg-0">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+      </form>
+    </nav>
+    <div class="container-fluid row">
+      <div v-for="item in anime" :key="item.mal_id"  style="width: 15rem;">
+        <div class="card-body" >
+          <img :src="item.images.webp.image_url" style="width: 100%; height: 200px; object-fit: cover;" alt="...">
+          <h5 class="card-title">{{item.title | truncate(10)}}</h5>
+          <p  class="card-text">Score : {{item.score}}</p>
+          <p  class="card-text">{{item.synopsis | truncate(50)}}</p>
+          <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
+      </div>
+
     </div>
+    
   </div>
 
 
   <script src="https://cdn.jsdelivr.net/npm/vue@2.x/dist/vue.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
   <script src="app.js"></script>
 </body>
 </html>
