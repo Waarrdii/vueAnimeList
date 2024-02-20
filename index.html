@@ -10,9 +10,13 @@
   <div id="app" class="container-fluid row">
     <div v-for="item in anime" :key="item.mal_id" class="card" style="width: 18rem;">
       
-      <div class="card-body">
-        <img :src="item.images.webp.image_url" class="card-img-top " alt="...">
-        <h5 class="card-title">{{item.title}} ({{item.score}})</h5>
+      <div class="card-body" >
+        
+          <img :src="item.images.webp.image_url" class="img-fluid" style="object-fit: cover;" alt="...">
+
+       
+        <h5 class="card-title">{{item.title | truncate(20)}}</h5>
+        <p  class="card-text">Score : {{item.score}}</p>
         <p  class="card-text">{{item.synopsis | truncate(80)}}</p>
         <a href="#" class="btn btn-primary">Go somewhere</a>
       </div>
